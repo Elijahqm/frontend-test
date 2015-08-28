@@ -1,0 +1,17 @@
+﻿<div class="container">
+
+    <form class="form-signin" >
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="text" ng-model="userName" class="form-control" placeholder="user name" required autofocus ng-change="HideUsernameHelpBlock()">
+        <span ng-show="isUsernameEmpty" class="help-block warning-block">Please enter your user name.</span>
+        <br/>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" ng-model="password" class="form-control" placeholder="password" required ng-change="HidePasswordHelpBlock()">
+        <span ng-show="isPasswordEmpty" class="help-block warning-block" ">Please enter your password.</span>
+        <br />
+        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="ValidateUser()">Sign in</button>
+        <span id="signin-message" class="help-block">{{signinMessage}}</span>
+    </form>
+
+</div>

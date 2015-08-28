@@ -1,0 +1,71 @@
+﻿
+<div ng-hide="validating">
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">Hello {{userName}}</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li ><a class="glyphicon glyphicon-home" href="#/home"></a></li>
+                    <li class="active"><a>Guest Book</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li onclick="$(this).addClass('active')" ng-click="logout()"><a> Log Out</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main">
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <h1>Welcome to our Guest Book</h1>
+            <p>Please leave us your name and comments below!</p>
+        </div>
+        
+        <div class="panel panel-warning">
+            <div class="panel-body">
+                <form class="form-signin">
+                    
+                    <input type="tel" ng-model="phoneOnPost" class="form-control" placeholder="Your Phone Number" required autofocus />
+                    <span ng-show="isInvalidePhone" class="help-block warning-block">Please enter a valid phone number.</span>
+                    <br />
+                    <textarea ng-model="messageOnPost" class="form-control" placeholder="Your Message Goes Here..." maxlength="700"></textarea>
+                    <br />
+                    <button class="btn btn-md btn-warning btn-block" type="submit" ng-click="PostMessage()">Post Your Message</button>
+                    <span id="signin-message" class="help-block">{{signinMessage}}</span>
+                </form>
+            </div>
+        </div> 
+
+
+        <div class="page-header">
+            <h1>Previous comments:</h1>
+        </div>
+        <div class="panel panel-default" ng-show="onError">
+            <div class="panel-body">
+                <div class="alert alert-warning">Oops! Something went wrong connecting to the server. Please try again later.</div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary" ng-hide="onError" ng-repeat="message in messages">
+            <div class="panel-heading">
+                <span><b>Name: </b>{{message.user}}  </span><span class="badge"><b>Phone: </b>{{message.phone}}<br /></span>
+            </div>
+            <div class="panel-body">
+                <b>Message: </b>{{message.message}}<br />
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿
+<div ng-hide="validating">
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">Hello {{userName}}</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a class="glyphicon glyphicon-home"></a></li>
+                    <li><a href="#/guestbook">Guest Book</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li onclick="$(this).addClass('active')" ng-click="logout()"><a> Log Out</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main">
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <h1>Interesting Facts About U.S. States</h1>
+            <p>Hover over each state initials to see more details about it...</p>
+        </div>
+        <p>
+            <button type="button" class="btn btn-lg" ng-repeat="state in stateInitials" ng-class="GetButtonClass($index)" ng-mouseover="ShowState(state)">{{state}}</button>
+        </p>
+        <div class="page-header">
+            <h1>{{stateName}}</h1>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div ng-show="onError" class="alert alert-warning">Oops! Something went wrong connecting to the server. Please try again later</div>
+                <div ng-hide="onError">
+                    <b>Abbreviation:</b> {{stateAbbreviation}}<br />
+                    <b>Capital:</b> {{stateCapital}}<br />
+                    <b>Most Populous City:</b> {{stateCity}}<br />
+                    <b>Population:</b> {{statePopulation}}<br />
+                    <b>Extension:</b> {{stateExtension}}<br />
+                    <b>Time Zone:</b> {{stateTimeZone1}}{{stateTimeZone2}} <br />
+                    <b>DST:</b> {{stateDST}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
